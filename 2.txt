@@ -1,1 +1,1 @@
-this is new branch feature1
+this is new branch feature1, git release
