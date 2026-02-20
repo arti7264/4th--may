@@ -1,1 +1,35 @@
+pipeline {
+    agent any
 
+    tools {
+        maven 'maven'
+    }
+
+    stages {
+
+        stage('Clone Code') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/username/project-name.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'echo Running Tests'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'echo Deploying Application'
+            }
+        }
+    }
+}
