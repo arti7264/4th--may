@@ -9,7 +9,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('devops-demo') {   // folder inside develop branch
+                dir('devops-demo') {   // 👈 folder where pom.xml exists
                     sh 'mvn clean package'
                 }
             }
