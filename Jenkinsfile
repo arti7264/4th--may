@@ -1,12 +1,25 @@
 pipeline {
-    agent { label 'maven' }   // run on agent node
+    agent any
+
+    tools {
+        maven 'maven'
+    }
 
     stages {
-        stage('Build on Agent') {
+
+        stage('Build') {
             steps {
-                sh 'hostname'
-                sh 'mvn -version'
-                sh 'mvn clean package'
+                dir('devops-demo') {   // <-- folder containing pom.xml
+                    sh 'mvn clean package'
+                }
+            }
+        }
+
+        stage('Archive Artifact') {
+            steps {
+                dir('devops-demo') {
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
             }
         }
     }
