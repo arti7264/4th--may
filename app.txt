@@ -1,3 +1,4 @@
 Online Order Management Application
 
 This is my DevOps practice project.
+Application Health Check: UP
